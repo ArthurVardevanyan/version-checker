@@ -1,4 +1,4 @@
-FROM golang:1.20-alpine as builder
+FROM docker.io/golang:1.21-alpine3.18 as builder
 
 RUN apk --no-cache add make
 
@@ -8,7 +8,7 @@ WORKDIR /app/
 RUN make build
 
 
-FROM alpine:3.18.2
+FROM alpine:3.18.3
 LABEL description="Kubernetes utility for exposing used image versions compared to the latest version, as metrics."
 
 RUN apk --no-cache add ca-certificates
